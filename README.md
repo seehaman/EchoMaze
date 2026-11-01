@@ -10,7 +10,7 @@ becomes an obstacle you have to plan around.
 
 ![Level 3 from above](Docs/Screenshots/Level3_top.png)
 
-**Gameplay video (2 min 19 s):** [Docs/Video/EchoMaze_Gameplay.mp4](Docs/Video/EchoMaze_Gameplay.mp4). This is a small preview copy; the full 720p version was submitted on Moodle.
+**Gameplay video (2 min 19 s):** [Docs/Video/EchoMaze_Gameplay.mp4](Docs/Video/EchoMaze_Gameplay.mp4).
 
 ---
 
