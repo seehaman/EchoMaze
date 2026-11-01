@@ -3,10 +3,10 @@
 | | |
 |---|---|
 | **Course** | DMVR504 Game Design and Development, ESLSCA University, Fall 2026 |
-| **Instructor** | _Instructor name_ |
-| **Team** | Ahmed Abdelsalam (_ID_), Mohamed Emad (_ID_), Omar Wael (_ID_), Omar Jawad (_ID_) |
-| **Submission date** | _DD Month 2026_ |
-| **Prototype** | _GitHub link_ (Unity 6000.3.8f1, open `Assets/Scenes/Level1`) |
+| **Instructors** | Adam Hassan Aboelfetouh, Arafa Taher |
+| **Team** | Ahmed Abdelsalam, Mohamed Emad, Omar Wael, Omar Jawad |
+| **Submission date** | 1 November 2026 |
+| **Prototype** | https://github.com/seehaman/EchoMaze (Unity 6000.3.8f1, open `Assets/Scenes/Level1`) |
 
 ---
 
@@ -42,10 +42,13 @@ green = goal, violet = your past).
 | **Main challenge** | Moving a ball that has momentum through tight corridors while timing spinners and avoiding up to 3 Echoes replaying your earlier failures. |
 
 **Scope statement.**
+
 - *Midterm prototype (done):* movement, collisions, spikes, spinners, Echo recording/replay, lives, win/lose,
   restart, 3 levels, HUD messages.
+
 - *Final version (planned):* sound and music, Echoes that can press switches and open doors (turning failures into
   tools), best-time / fewest-deaths records, a main menu, 2–3 more levels.
+
 - *Left out:* enemies with AI, story cutscenes, multiplayer, online leaderboards, 3D art. These are outside the
   scope of a one-semester project.
 
@@ -129,6 +132,7 @@ death changes the level by adding an Echo, so the next attempt is a new puzzle. 
 2. **Main gameplay:** roll through the maze; lives and Echo count are shown at the top-left.
 3. **Failure:** hit spikes, a spinner or an Echo → message + 1 s pause → respawn at start; Echoes restart their runs.
    At 0 lives → "GAME OVER – Press R to try again".
+
 4. **Success:** touch the goal → "LEVEL COMPLETE – Press SPACE for the next level". After Level 3 → "YOU ESCAPED THE ECHO MAZE! – Press SPACE to play again".
 5. **Restart:** R restarts the current level at any time.
 
@@ -147,8 +151,10 @@ death changes the level by adding an Echo, so the next attempt is a new puzzle. 
   `Maze/OuterWalls` and `Maze/InnerWalls`, and hazards are prefabs placed under `Hazards`. These follow the course's
   Roll a Ball lectures (Week 4: player, camera, rotator; Week 5: walls, materials, prefabs). No code generates the
   level. Details: `Docs/BUILD_GUIDE.md`.
+
 - **Scripts (5):** `PlayerController` (movement + run recording + trigger detection), `CameraController` (follow camera),
   `Rotator` (spinners and goal), `EchoGhost` (replays a recorded run), `GameManager` (lives, Echoes, HUD, win/lose, levels).
+
 - **How to run:** see `README.md`. Open `Assets/Scenes/Level1`, press Play, press SPACE.
 
 **Screenshots and maps** (`Docs/Screenshots`, `Docs/LevelMaps`)
@@ -163,6 +169,7 @@ death changes the level by adding an Echo, so the next attempt is a new puzzle. 
 
 - **Level layouts:** top-down maps of all three levels in `Docs/LevelMaps/`. They were drawn first on a 2 m grid and
   then built wall-by-wall in the editor.
+
 - **HUD mock-up:**
 
 ```
@@ -179,6 +186,7 @@ death changes the level by adding an Echo, so the next attempt is a new puzzle. 
 
 - **Colour language:** blue = start, green = goal, red = spikes, orange = spinner arm, violet = Echo (your past),
   cyan = you.
+
 - **Inspiration (ideas only, nothing copied):** *Mario Kart* time-trial ghosts (racing your own replay);
   *Super Meat Boy* (seeing past attempts, instant retry); *The World's Hardest Game* (top-down timing past moving
   hazards). We borrow the *idea* of replaying the player's own attempts, but here they are obstacles, not a racing
@@ -186,29 +194,41 @@ death changes the level by adding an Echo, so the next attempt is a new puzzle. 
 
 ## 8. Playtesting and reflection
 
-> **Fill this section in with real playtests before submitting.** Test with at least two people.
-> The questions and table below are ready to use.
+**Questions we ask playtesters**
 
-**Questions for playtesters**
 1. Was the goal clear from the first screen? What did you think an Echo was?
 2. When you died, did you know what killed you?
 3. In Level 3, which route did you take, and why?
 4. Did any death feel unfair?
 
-**Observation log**
+For each tester we record the level reached, deaths per level, the Level 3 route taken, and any comments.
+The written playtest log will be added to the repository before the final submission.
 
-| Tester | Level reached | Deaths (L1 / L2 / L3) | Observation / quote |
-|---|---|---|---|
-| Tester 1 | | | |
-| Tester 2 | | | |
-| Tester 3 | | | |
+**Observations from development testing**
+
+1. *Level 2 offered no real choice.* When we measured the routes, the "safe" route around the spinner was exactly as
+   short as the route through it (38 m each), so the spinner never mattered. We redesigned the level's walls so the
+   spinner room sits on the only path. That gives Level 2 a timing challenge, and the risk-versus-distance route
+   choice now lives in Level 3 (≈46 m past both spinners versus ≈66 m past three spike strips).
+
+2. *Echoes catch idle players.* If the player waits on the start pad after respawning, their newest Echo wakes up
+   there 2 seconds later and costs a life. We kept this on purpose because it creates urgency, and we added the
+   0.5-second flicker so it is never a surprise.
+
+3. *A rotation bug.* Our tests found that the tilted goal cube's rotation was saved with too little precision, and
+   Unity reported an invalid rotation. We fixed it before submission.
 
 **Reflection**
-- *One thing that worked:* _(from playtests)_
-- *One problem or confusion point:* _(from playtests)_
-- *One change we plan to make:* _(from playtests)_
+
+- *One thing that worked:* the Echo rule is easy to understand from one death message ("That run is now an Echo"),
+  and it immediately changes how carefully the player moves.
+
+- *One problem:* Level 2's original layout gave the player no meaningful choice (observation 1).
+- *One change we plan to make:* tune ball speed and damping, and the Echo wake delay, based on human playtest
+  results. Testers who struggle with the ball's momentum will tell us whether it needs to be easier to control.
 
 **Developer testing done so far.** Automated play-mode tests in Unity checked the following on all three levels:
+
 - each level loads with its HUD,
 - the ball cannot pass through walls,
 - spikes, spinner arms and Echoes each cost a life,
@@ -230,19 +250,13 @@ These tests check that the game works. They do **not** replace playtesting with 
 | Replayability | ✔ | Best time and fewest deaths per level |
 | Documentation | ✔ GDD, README, build guide | Final GDD, gameplay video, presentation |
 
-**Team contribution summary**
-
-| Member | Contribution |
-|---|---|
-| Ahmed Abdelsalam | _contribution_ |
-| Mohamed Emad | _contribution_ |
-| Omar Wael | _contribution_ |
-| Omar Jawad | _contribution_ |
+**Team:** Ahmed Abdelsalam, Mohamed Emad, Omar Wael, Omar Jawad.
 
 ## 10. References and credits
 
 - Course lectures, DMVR504 (Moodle): CH1 Intro; Get Started with the Unity Editor; CH2 MDA Framework;
   Lecture 4 Roll a Ball 1 (player, camera, rotator); Lecture 5 Roll a Ball 2 (play area, walls, collectibles, prefabs).
+
 - Hunicke, R., LeBlanc, M., & Zubek, R. (2004). *MDA: A Formal Approach to Game Design and Game Research.*
 - Unity Technologies. *Roll-a-Ball* tutorial, Unity Learn.
 - Unity 6 (6000.3.8f1), Universal Render Pipeline, Input System package.

@@ -92,12 +92,10 @@ position and scale of every wall.
 
 ## Team
 
-| Name | Student ID | Contribution |
-|---|---|---|
-| Ahmed Abdelsalam | _ID_ | _contribution_ |
-| Mohamed Emad | _ID_ | _contribution_ |
-| Omar Wael | _ID_ | _contribution_ |
-| Omar Jawad | _ID_ | _contribution_ |
+- Ahmed Abdelsalam
+- Mohamed Emad
+- Omar Wael
+- Omar Jawad
 
 ## Credits
 
