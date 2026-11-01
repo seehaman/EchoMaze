@@ -10,6 +10,8 @@ becomes an obstacle you have to plan around.
 
 ![Level 3 from above](Docs/Screenshots/Level3_top.png)
 
+**Gameplay video (2 min 19 s):** [Docs/Video/EchoMaze_Gameplay.mp4](Docs/Video/EchoMaze_Gameplay.mp4). This is a small preview copy; the full 720p version was submitted on Moodle.
+
 ---
 
 ## How to open and run
@@ -56,7 +58,8 @@ Docs/
 ├── GameDesignDocument.md   midterm design document (concept, principles, MDA, loop, playtesting)
 ├── BUILD_GUIDE.md          how each part was built in the editor + every object's Transform
 ├── LevelMaps/              top-down map of each level
-└── Screenshots/            screenshots of each level
+├── Screenshots/            screenshots of each level
+└── Video/                  gameplay recording
 ```
 
 ### How it is built
