@@ -11,6 +11,7 @@ becomes an obstacle you have to plan around.
 ![Level 3 from above](Docs/Screenshots/Level3_top.png)
 
 **Gameplay video (2 min 19 s):** [Docs/Video/EchoMaze_Gameplay.mp4](Docs/Video/EchoMaze_Gameplay.mp4).
+**Midterm slides:** [PDF](Docs/Presentation/EchoMaze_Midterm_Presentation.pdf) · [PowerPoint](Docs/Presentation/EchoMaze_Midterm_Presentation.pptx).
 
 ---
 
@@ -59,7 +60,8 @@ Docs/
 ├── BUILD_GUIDE.md          how each part was built in the editor + every object's Transform
 ├── LevelMaps/              top-down map of each level
 ├── Screenshots/            screenshots of each level
-└── Video/                  gameplay recording
+├── Video/                  gameplay recording
+└── Presentation/           midterm slides (PDF + PowerPoint)
 ```
 
 ### How it is built
